@@ -1,1 +1,1 @@
-export { default } from "./catDesc";
+export { default } from "./catFetch";

@@ -10,9 +10,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import CatAvatar from "./pages/Fetch";
+// import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
-import CatDesc from "./pages/Fetch";
+import CatDesc from "./pages/Fetch/catDesc";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -39,7 +39,7 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route path="/" element={<CatDesc />} />
+            <Route path="/" element={<CatFetch/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

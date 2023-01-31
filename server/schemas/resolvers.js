@@ -1,7 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User } = require("../models");
 const Discussion = require("../models/Discussion");
-const Comment = require('../models/Comment.js')
+const Comment = require("../models/Comment.js");
 const { signToken } = require("../utils/auth.js");
 
 const resolvers = {
@@ -9,11 +9,11 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate({
-          path: 'discussions',
+          path: "discussions",
           populate: {
-            path: 'comments',
-            model: 'Comment'
-          }
+            path: "comments",
+            model: "Comment",
+          },
         });
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -25,8 +25,7 @@ const resolvers = {
 
     // discussionComments: async (parent, discussionId) => {
     //   return Comments.findById((_id: ))
-    // } 
-
+    // }
   },
   Mutation: {
     register: async (parent, { name, email, password }) => {
@@ -54,10 +53,12 @@ const resolvers = {
       if (context.user) {
         const discussion = await Discussion.create({
           title,
-          user: context.user._id
-        })
-        await User.findByIdAndUpdate(context.user._id, { $push: { discussions: discussion._id } })
-        return discussion
+          user: context.user._id,
+        });
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { discussions: discussion._id },
+        });
+        return discussion;
       }
     },
     addComment: async (parent, { text, discussion }, context) => {
@@ -65,12 +66,14 @@ const resolvers = {
         const comment = await Comment.create({
           text,
           user: context.user._id,
-          discussion
-        })
-        await Discussion.findByIdAndUpdate(discussion, { $push: { comments: comment._id } })
-        return comment
+          discussion,
+        });
+        await Discussion.findByIdAndUpdate(discussion, {
+          $push: { comments: comment._id },
+        });
+        return comment;
       }
-    }
+    },
   },
 };
 

@@ -1,7 +1,12 @@
 import React from "react";
 
-function CatDesc({ catDesc }) {
-  return <div>{catDesc}</div>;
-}
+const CatDesc = ({ catDesc }) => {
+    console.log(catDesc)
+  return (
+    <div>
+      <p>{catDesc}</p>
+    </div>
+  );
+};
 
 export default CatDesc;
