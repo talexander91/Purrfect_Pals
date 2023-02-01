@@ -10,10 +10,16 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+<<<<<<< HEAD
 import Discussion from "./pages/Discussion";
 // import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch/catDesc";
+=======
+import CatAvatar from "./pages/Fetch";
+import CatFetch from "./pages/Fetch";
+import CatDesc from "./pages/Fetch";
+>>>>>>> e7462ddbe9e91e4945afd726766675e1d241cc84
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -40,7 +46,11 @@ function App() {
       <Router>
         <div>
           <Routes>
+<<<<<<< HEAD
             <Route path="/" element={<Home/>} />
+=======
+            <Route path="/" element={<Home />} />
+>>>>>>> e7462ddbe9e91e4945afd726766675e1d241cc84
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/discussion" element={<Discussion/>}/>
