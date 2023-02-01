@@ -10,6 +10,9 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CatAvatar from "./pages/Fetch";
+import CatFetch from "./pages/Fetch";
+import CatDesc from "./pages/Fetch";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -36,7 +39,7 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<CatDesc />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
