@@ -18,6 +18,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  discussions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Discussion'
+    }
+  ]
 });
 
 userSchema.pre("save", async function (next) {
