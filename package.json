@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21"
+    "postcss": "^8.4.21",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.7"
   }
 }
