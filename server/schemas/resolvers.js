@@ -18,14 +18,12 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-
-    // allDiscussions: async (parent) => {
-    //   return Discussion.findAll();
-    // },
-
-    // discussionComments: async (parent, discussionId) => {
-    //   return Comments.findById((_id: ))
-    // }
+    discussions: async (parent, args, context) => {
+      return Discussion.find().populate({
+        path: "comments",
+        model: "Comment",
+      });
+    },
   },
   Mutation: {
     register: async (parent, { name, email, password }) => {
