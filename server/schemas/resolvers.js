@@ -18,14 +18,9 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-
-    // allDiscussions: async (parent) => {
-    //   return Discussion.findAll();
-    // },
-
-    // discussionComments: async (parent, discussionId) => {
-    //   return Comments.findById((_id: ))
-    // }
+    discussions: async (parent, args, context) => {
+      return Discussion.find()
+    },
   },
   Mutation: {
     register: async (parent, { name, email, password }) => {
@@ -65,7 +60,7 @@ const resolvers = {
       if (context.user) {
         const comment = await Comment.create({
           text,
-          user: context.user._id,
+          user: context.user,
           discussion,
         });
         await Discussion.findByIdAndUpdate(discussion, {

@@ -1,3 +1,80 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.discussion-board {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #8d99ae;
+  }
+  
+  .discussion-board h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .comment {
+    background-color: #8d99ae;
+    padding: 20px;
+    color: #2b2d42;
+  }
+  
+  .comment h2 {
+    margin: 0 0 10px 0;
+  }
+  
+  .comment p {
+    margin: 0 0 20px 0;
+  }
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1;
+  font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+input, select, option, optgroup, textarea, button,
+pre, code {
+  font-size: 100%;
+  font-family: inherit;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+html, body, #root {
+  height: 100vh;
+  background-color: #F4EBE8;
+  margin: 0;
+  padding: 0;
+}
+
+#navText {
+  color: #93e9be
+  
+}
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
