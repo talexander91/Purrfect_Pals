@@ -19,10 +19,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     discussions: async (parent, args, context) => {
-      return Discussion.find().populate({
-        path: "comments",
-        model: "Comment",
-      });
+      return Discussion.find()
     },
   },
   Mutation: {
@@ -63,7 +60,7 @@ const resolvers = {
       if (context.user) {
         const comment = await Comment.create({
           text,
-          user: context.user._id,
+          user: context.user,
           discussion,
         });
         await Discussion.findByIdAndUpdate(discussion, {
