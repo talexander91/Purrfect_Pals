@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import CatAvatar from "./catAvatar";
-import CatDesc from "./catDesc"
+import CatDesc from "./catDesc";
 
 const cat = "siamese";
 
@@ -28,10 +28,20 @@ function CatFetch() {
   return (
     <div>
       <CatAvatar catPic={catPic.image_link} />
-      <CatDesc catDesc={[catDesc.origin, catDesc.shedding, catDesc.grooming, catDesc.min_weight, catDesc.max_weight, catDesc.min_life_expectancy, catDesc.max_life_expectancy, catDesc.name]} />
+      <CatDesc
+        catDesc={[
+          catDesc.origin,
+          catDesc.name,
+          catDesc.grooming,
+          catDesc.shedding,
+          catDesc.min_life_expectancy,
+          catDesc.max_life_expectancy,
+          catDesc.min_weight,
+          catDesc.max_weight,
+        ]}
+      />
     </div>
   );
 }
 
 export default CatFetch;
-
