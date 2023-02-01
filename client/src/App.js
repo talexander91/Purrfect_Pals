@@ -10,6 +10,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Discussion from "./pages/Discussion";
 // import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch/catDesc";
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/discussion" element={<Discussion/>}/>
           </Routes>
         </div>
       </Router>
