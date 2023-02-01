@@ -26,23 +26,31 @@ export const LOGIN_USER = gql`
   }
 `;
 export const CREATE_DISCUSSION = gql`
-  mutation addDiscussion($title: String!) {
-    addDiscussion(title: $title) {
+mutation AddComment($title: String!) {
+  addDiscussion(title: $title) {
+    _id
+    title
+    userId {
       _id
-      title
+      name
     }
   }
+}
 `;
 
 export const CREATE_COMMENT = gql`
-  mutation addComment($text: String!, $discussionId: ID!) {
-    addComment(text: $text, discussion: $discussionId) {
+mutation AddComment($text: String!, $discussion: ID!) {
+  addComment(text: $text, discussion: $discussion) {
+    _id
+    discussion {
       _id
-      text
-      discussion {
-        _id
-        title
-      }
+      title
+    }
+    text
+    user {
+      _id
+      name
     }
   }
+}
 `;
