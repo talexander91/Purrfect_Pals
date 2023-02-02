@@ -4,11 +4,11 @@ import CatDesc from "./catDesc";
 import Box from '@mui/material/Box';
 
 
-const cat = "American";
-
+// cat input = text:cat
 function CatFetch(catInput) {
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
+  const cat = "siamese";
 
   async function fetchData() {
     const response = await fetch(

@@ -25,7 +25,6 @@ class DiscussionBoard extends Component {
   render() {
     return (
       <div>
-        <DiscussionHeader></DiscussionHeader>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
