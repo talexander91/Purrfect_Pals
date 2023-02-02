@@ -41,7 +41,7 @@ function Login() {
       }}
     >
       <Box sx={{ mb: 2, fontSize: 25 }}>
-        <h1>Login Page</h1>
+        <h1>Login</h1>
       </Box>
       <Box sx={{}}>
         <form onSubmit={handleFormSubmit}>
@@ -63,7 +63,9 @@ function Login() {
               onChange={handleInputChange}
             />
           </Box>
-          <button type="submit">Login</button>
+          <Box sx={{ fontSize: 18 }}>
+            <button type="submit">Login</button>
+          </Box>
         </form>
       </Box>
     </Box>
