@@ -21,6 +21,7 @@ const pages = [
 const settings = [
   { text: "Profile", href: "/profile/:id" },
   { text: "Login", href: "/login" },
+  { text: "Register", href: "/register" },
 ];
 
 function ResponsiveAppBar() {
