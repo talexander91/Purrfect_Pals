@@ -15,7 +15,7 @@ import Discussion from "./pages/Discussion";
 import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch";
-
+import Box from "@mui/material/Box";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
