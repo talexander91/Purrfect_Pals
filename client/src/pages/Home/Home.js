@@ -1,14 +1,25 @@
 import { useState } from "react";
-import DiscussionBoard from "../Discussion/DiscussionBoard";
-import CatFetch from "../Fetch/catFetch";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+
+const theme = createTheme({
+  palette: {
+    secondary: {
+      // This is green.A700 as hex.
+      main: "#11cb5f",
+    },
+  },
+});
 
 function Home() {
   return (
-    <div>
-      {/* <CatCreate></CatCreate> */}
-      <CatFetch></CatFetch>
-      <DiscussionBoard></DiscussionBoard>
-    </div>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <ThemeProvider theme={theme}>
+        <Button>Primary</Button>
+        <Button color="secondary">Secondary</Button>
+      </ThemeProvider>
+    </Box>
   );
 }
 
