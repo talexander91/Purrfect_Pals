@@ -15,6 +15,7 @@ import Discussion from "./pages/Discussion";
 import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch";
+import Shelter from "./pages/Shelter";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -45,7 +46,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/discussion" element={<Discussion/>}/>
+            <Route path="/shelter" element={<Shelter />} />
+            <Route path="/discussion" element={<Discussion />} />
           </Routes>
         </div>
       </Router>
