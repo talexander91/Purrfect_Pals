@@ -1,12 +1,14 @@
 import { React, useEffect, useState } from "react";
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
+import Box from '@mui/material/Box';
 
-const cat = "siamese";
 
-function CatFetch() {
+// cat input = text:cat
+function CatFetch(catInput) {
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
+  const cat = "siamese";
 
   async function fetchData() {
     const response = await fetch(
@@ -26,8 +28,17 @@ function CatFetch() {
   }, []);
 
   return (
-    <div>
-      <CatAvatar catPic={catPic.image_link} />
+    <Box sx={{
+      display: "flex",
+      flexDirection: "row",
+      width: "90%",
+      backgroundColor: 'primary.dark',
+      '&:hover': {
+        backgroundColor: 'primary.main',
+        opacity: [0.9, 0.8, 0.7],
+      },
+    }}>
+      <CatAvatar catPic={catPic.image_link}  />
       <CatDesc
         catDesc={[
           catDesc.origin,
@@ -40,7 +51,7 @@ function CatFetch() {
           catDesc.max_weight,
         ]}
       />
-    </div>
+    </Box>
   );
 }
 
