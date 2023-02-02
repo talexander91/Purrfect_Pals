@@ -1,16 +1,25 @@
 import { useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Slider from "@mui/material/Slider";
-import VolumeDown from "@mui/icons-material/VolumeDown";
-import VolumeUp from "@mui/icons-material/VolumeUp";
+
+const theme = createTheme({
+  palette: {
+    secondary: {
+      // This is green.A700 as hex.
+      main: "#11cb5f",
+    },
+  },
+});
 
 function Home() {
   return (
-    <div>
-      <h1>hi</h1>
-    </div>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <ThemeProvider theme={theme}>
+        <Button>Primary</Button>
+        <Button color="secondary">Secondary</Button>
+      </ThemeProvider>
+    </Box>
   );
 }
 

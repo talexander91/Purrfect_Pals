@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+import Box from "@mui/material/Box";
 
 import Auth from "../../utils/auth.js";
 
@@ -30,24 +31,42 @@ function Login() {
     }
   };
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="email"
-          name="email"
-          value={formState.email}
-          onChange={handleInputChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={formState.password}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Login User</button>
-      </form>
-    </div>
+    <Box
+      sx={{
+        height: "75vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Box sx={{ mb: 2, fontSize: 25 }}>
+        <h1>Login Page</h1>
+      </Box>
+      <Box sx={{}}>
+        <form onSubmit={handleFormSubmit}>
+          <Box sx={{ mb: 1, fontSize: 25 }}>
+            <p>Email</p>
+            <input
+              type="email"
+              name="email"
+              value={formState.email}
+              onChange={handleInputChange}
+            />
+          </Box>
+          <Box sx={{ mb: 1, fontSize: 25 }}>
+            <p>Password</p>
+            <input
+              type="password"
+              name="password"
+              value={formState.password}
+              onChange={handleInputChange}
+            />
+          </Box>
+          <button type="submit">Login</button>
+        </form>
+      </Box>
+    </Box>
   );
 }
 
