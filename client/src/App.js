@@ -16,8 +16,10 @@ import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch";
 import Shelter from "./pages/Shelter";
-
+import AuthService from "./utils/auth"
+import AuthContext from "./components/Navbar/index"
 import Box from "@mui/material/Box";
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });

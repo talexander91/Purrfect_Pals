@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,19 +11,39 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Auth from "../../utils/auth.js";
+import React, { useState, useContext } from "react";
+import AuthService from "../../utils/auth";
+import logout from "../../utils/auth";
+
+const AuthContext = React.createContext();
 
 const pages = [
   { linkText: "Home", linkHref: "/" },
   { linkText: "Discussion", linkHref: "/discussion" },
   { linkText: "Shelter", linkHref: "/shelter" },
 ];
-const settings = [
+let settings = [
   { text: "Profile", href: "/profile/:id" },
   { text: "Login", href: "/login" },
   { text: "Register", href: "/register" },
+  { text: "Logout", href: "/" },
 ];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ Auth }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(AuthService.loggedIn());
+  console.log(AuthService.loggedIn());
+
+  settings = isLoggedIn
+    ? [
+        { text: "Profile", href: "/profile/:id" },
+        { text: "Logout", href: "/", onClick: () => logout() },
+      ]
+    : [
+        { text: "Login", href: "/login" },
+        { text: "Register", href: "/register" },
+      ];
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -158,9 +177,13 @@ function ResponsiveAppBar() {
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
-                    <a id="navText" href={setting.href}>
+                    <Button
+                      id="navText"
+                      href={setting.href}
+                      onClick={setting.onClick}
+                    >
                       {setting.text}
-                    </a>
+                    </Button>
                   </Typography>
                 </MenuItem>
               ))}
