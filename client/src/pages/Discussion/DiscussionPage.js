@@ -1,7 +1,6 @@
 import { useState } from "react";
 import DiscussionBoard from "../Discussion/DiscussionBoard";
 import CatFetch from "../Fetch/catFetch";
-import CatCreate from "../Discussion/CatCreate";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
