@@ -17,6 +17,7 @@ import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch";
 import Shelter from "./pages/Shelter";
 
+import Box from "@mui/material/Box";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
