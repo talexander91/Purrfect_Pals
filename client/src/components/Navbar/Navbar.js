@@ -17,6 +17,7 @@ const pages = [
   { linkText: "Home", linkHref: "/" },
   { linkText: "Discussion", linkHref: "/discussion" },
   { linkText: "Shelter", linkHref: "/shelter" },
+  { linkText: "About", linkHref: "/about" },
 ];
 const settings = [
   { text: "Profile", href: "/profile/:id" },

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 
 const Shelter = () => {
   const [zipCode, setZipCode] = useState("");
@@ -51,7 +53,15 @@ const Shelter = () => {
   };
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        m: 2,
+      }}
+    >
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -62,16 +72,18 @@ const Shelter = () => {
         <button type="submit">Search</button>
       </form>
       {shelters.map((shelter) => (
-        <div key={shelter.id}>
-          <h2>{shelter.name}</h2>
+        <Box sx={{ textAlign: "center", m: 1 }} key={shelter.id}>
+          <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
+            <a href={shelter.website}>{shelter.name}</a>
+          </Typography>
           <p>{shelter.address.address1}</p>
           <p>
             {shelter.address.city}, {shelter.address.state}{" "}
             {shelter.address.postcode}
           </p>
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 

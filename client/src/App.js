@@ -16,6 +16,7 @@ import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";
 import CatDesc from "./pages/Fetch";
 import Shelter from "./pages/Shelter";
+import About from "./pages/About/About";
 
 import Box from "@mui/material/Box";
 const httpLink = createHttpLink({
@@ -49,6 +50,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/shelter" element={<Shelter />} />
             <Route path="/discussion" element={<Discussion />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </div>
       </Router>

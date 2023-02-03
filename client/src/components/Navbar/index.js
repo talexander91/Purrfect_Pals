@@ -17,6 +17,7 @@ const pages = [
   { linkText: "Home", linkHref: "/" },
   { linkText: "Discussion", linkHref: "/discussion" },
   { linkText: "Shelter", linkHref: "/shelter" },
+  { linkText: "About", linkHref: "/about" },
 ];
 const settings = [
   { text: "Profile", href: "/profile/:id" },
@@ -47,6 +48,20 @@ function ResponsiveAppBar() {
     <AppBar style={{ background: "#8E8DBE" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              class="text-rainbow-animation"
+              sx={{ textAlign: "center" }}
+            >
+              Purrfect Pals
+            </Typography>
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -62,7 +77,6 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           ></Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
