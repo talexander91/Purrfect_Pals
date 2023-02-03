@@ -56,7 +56,7 @@ function Register() {
         <p>Email</p>
         <Box sx={{ mb: 2, fontSize: 25 }}>
           <input
-            type="email"
+            type="Hello"
             name="email"
             value={formState.email}
             onChange={handleInputChange}

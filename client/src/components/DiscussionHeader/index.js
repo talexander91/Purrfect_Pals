@@ -18,7 +18,6 @@ function DiscussionHeader(){
           <CatFetch></CatFetch>
       
     </Box>
-        
     )
 };
 
