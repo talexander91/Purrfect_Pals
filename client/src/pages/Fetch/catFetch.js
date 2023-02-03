@@ -4,12 +4,11 @@ import CatDesc from "./catDesc";
 import Box from '@mui/material/Box';
 
 
-// cat input = text:cat
-function CatFetch(catInput) {
+function CatFetch(catName) {
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
-  const cat = "siamese";
-
+  console.log(catName.catName)
+  let cat = catName.catName;
   async function fetchData() {
     const response = await fetch(
       `https://api.api-ninjas.com/v1/cats?name=${cat}`,
@@ -22,9 +21,9 @@ function CatFetch(catInput) {
     setcatPic(data[0]);
     setcatDesc(data[0]);
   }
-
   useEffect(() => {
-    fetchData();
+    fetchData()
+    console.log(catPic)
   }, []);
 
   return (
@@ -38,7 +37,7 @@ function CatFetch(catInput) {
         opacity: [0.9, 0.8, 0.7],
       },
     }}>
-      <CatAvatar catPic={catPic.image_link}  />
+      <CatAvatar catPic={catPic.image_link}/>
       <CatDesc
         catDesc={[
           catDesc.origin,
