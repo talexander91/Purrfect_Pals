@@ -18,8 +18,6 @@ function DiscussionPage() {
     };
 
     const handleFormSubmit = async (event) => {
-        console.log(event)
-
         try {
             const { info } = await makeDiscussion({
                 variables: { ...formState },
@@ -40,7 +38,6 @@ function DiscussionPage() {
                     value={formState.name}
                     onChange={handleInputChange}
                 />
-                {console.log(formState)}
                 <button>Submit</button>
             </form>
         </Box>

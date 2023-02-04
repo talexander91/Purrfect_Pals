@@ -14,13 +14,12 @@ function LoadAllDiscussions() {
         <div id="discussion-section">
             <DiscussionPage></DiscussionPage>
             <div>
-            {data.discussions.map((discussions) => {
-                const catName = discussions.title;
-                console.log(discussions.title)
-                return (
-                    <CatFetch catName={catName}></CatFetch>
-                );
-            })}
+                {data.discussions.map((discussions) => {
+                    const catName = discussions.title;
+                    return (
+                        <CatFetch catName={catName}></CatFetch>
+                    );
+                })}
             </div>
         </div>)
 }

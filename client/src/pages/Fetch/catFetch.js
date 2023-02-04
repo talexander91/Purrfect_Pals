@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 function CatFetch(catName) {
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
-  console.log(catName.catName)
   let cat = catName.catName;
   async function fetchData() {
     const response = await fetch(
@@ -23,7 +22,6 @@ function CatFetch(catName) {
   }
   useEffect(() => {
     fetchData()
-    console.log(catPic)
   }, []);
 
   return (
