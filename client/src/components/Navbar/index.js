@@ -16,8 +16,6 @@ import React, { useState, useContext } from "react";
 import AuthService from "../../utils/auth";
 import logout from "../../utils/auth";
 
-const AuthContext = React.createContext();
-
 const pages = [
   { linkText: "Home", linkHref: "/" },
   { linkText: "Discussion", linkHref: "/discussion" },
