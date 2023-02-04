@@ -10,11 +10,7 @@ import { QUERY_DISCUSSIONS } from "../../utils/queries";
 
 function DiscussionPage() {
     const [formState, setFormState] = useState("");
-    const [makeDiscussion, { error, data }] = useMutation(CREATE_DISCUSSION);
-    const { loading, err, info } = useQuery(QUERY_DISCUSSIONS);
-    console.log(data)
-    if (loading) return <p>Loading...</p>;
-    if (err) return <p>Error!</p>;
+    const [makeDiscussion, { error, info }] = useMutation(CREATE_DISCUSSION);
 
 
     const handleInputChange = ({ target: { name, value } }) => {
@@ -22,14 +18,13 @@ function DiscussionPage() {
     };
 
     const handleFormSubmit = async (event) => {
-        event.preventDefault();
         console.log(event)
 
         try {
-            const { data } = await makeDiscussion({
+            const { info } = await makeDiscussion({
                 variables: { ...formState },
             });
-            console.log(data)
+            console.log(info)
         } catch (err) {
             console.error(err);
         }
@@ -45,35 +40,9 @@ function DiscussionPage() {
                     value={formState.name}
                     onChange={handleInputChange}
                 />
+                {console.log(formState)}
                 <button>Submit</button>
             </form>
-
-            <div id="discussion-section">
-                {info.map(discussions => {
-                    // const [catData, setCatData] = useState(null);
-
-                    // useEffect(() => {
-                        async function fetchCatData() {
-                            const data = CatFetch(discussions.title);
-                            // setCatData(data);
-                        }
-
-                        fetchCatData();
-                    // }, [discussion.title]);
-
-                    return (
-                        <div key={discussions._id}>
-                            <h2>{discussions.title}</h2>
-                            {data ? (
-                                <p>{data.content}</p>
-                            ) : (
-                                <p>Loading data...</p>
-                            )}
-                        </div>
-                    );
-                })}
-            </div>
-            <DiscussionBoard></DiscussionBoard>
         </Box>
     );
 }
