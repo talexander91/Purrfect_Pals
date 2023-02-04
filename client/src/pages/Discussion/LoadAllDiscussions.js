@@ -8,6 +8,7 @@ import DiscussionPage from "./DiscussionPage";
 
 function LoadAllDiscussions() {
     const { loading, err, data } = useQuery(QUERY_DISCUSSIONS);
+    console.log(data)
     if (loading) return <p>Loading...</p>;
     if (err) return <p>Error!</p>;
     return (

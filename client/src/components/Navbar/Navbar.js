@@ -14,7 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Auth from "../../utils/auth.js";
 import React, { useState, useContext } from "react";
 import AuthService from "../../utils/auth";
-import logout from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 const pages = [
   { linkText: "Home", linkHref: "/" },
@@ -28,14 +28,13 @@ let settings = [
 ];
 
 function Navbar() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(AuthService.loggedIn());
   console.log(AuthService.loggedIn());
 
   settings = isLoggedIn
     ? [
         { text: "Profile", href: "/profile/:id" },
-        { text: "Logout", href: "/", onClick: () => logout() },
+        { text: "Logout", href: "/", onClick: AuthService.logout },
       ]
     : [
         { text: "Login", href: "/login" },
@@ -175,9 +174,9 @@ function Navbar() {
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
-                    <a id="navText" href={setting.href}>
+                    <Link id="navText" to={setting.href} onClick={setting?.onClick}>
                       {setting.text}
-                    </a>
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
