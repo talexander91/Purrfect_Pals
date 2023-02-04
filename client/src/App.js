@@ -10,7 +10,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Discussion from "./pages/Discussion";
 import CatAvatar from "./pages/Fetch";
 import CatFetch from "./pages/Fetch";

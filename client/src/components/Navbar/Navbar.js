@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +11,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Auth from "../../utils/auth.js";
+import React, { useState, useContext } from "react";
+import AuthService from "../../utils/auth";
+import logout from "../../utils/auth";
 
 const pages = [
   { linkText: "Home", linkHref: "/" },
@@ -19,12 +22,13 @@ const pages = [
   { linkText: "Shelter", linkHref: "/shelter" },
   { linkText: "About", linkHref: "/about" },
 ];
-const settings = [
+let settings = [
   { text: "Profile", href: "/profile/:id" },
   { text: "Login", href: "/login" },
 ];
 
 function Navbar() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(AuthService.loggedIn());
   console.log(AuthService.loggedIn());
 
