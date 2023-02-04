@@ -19,7 +19,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     discussions: async (parent, args, context) => {
-      return Discussion.find()
+      return Discussion.find();
     },
   },
   Mutation: {

@@ -22,10 +22,9 @@ const pages = [
 const settings = [
   { text: "Profile", href: "/profile/:id" },
   { text: "Login", href: "/login" },
-  { text: "Register", href: "/register" },
 ];
 
-function ResponsiveAppBar() {
+function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -48,20 +47,6 @@ function ResponsiveAppBar() {
     <AppBar style={{ background: "#8E8DBE" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              class="text-rainbow-animation"
-              sx={{ textAlign: "center" }}
-            >
-              Purrfect Pals
-            </Typography>
-          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -77,6 +62,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           ></Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -185,4 +171,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Navbar;
