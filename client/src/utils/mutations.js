@@ -30,10 +30,6 @@ mutation AddComment($title: String!) {
   addDiscussion(title: $title) {
     _id
     title
-    userId {
-      _id
-      name
-    }
   }
 }
 `;
