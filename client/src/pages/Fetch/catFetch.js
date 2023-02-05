@@ -7,14 +7,10 @@ import LoadDiscussionById from "../LoadDiscussionById/LoadDiscussionById";
 
 
 function CatFetch(props) {
-  const navigate = useNavigate();
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
   
-  const handleClick = () => {
-    navigate(`/discussion/${props.discussion}`, { state: { discussion: props.discussion }});
 
-  };
   
   let cat = props.catName;
   async function fetchData() {
@@ -43,7 +39,7 @@ function CatFetch(props) {
         backgroundColor: 'primary.main',
         opacity: [0.9, 0.8, 0.7],
       },
-    }} onClick={handleClick}>
+    }} >
       <CatAvatar catPic={catPic.image_link} />
       <CatDesc
         catDesc={[
