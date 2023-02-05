@@ -26,3 +26,21 @@ query Discussions {
     name
   }
 }`;
+export const GET_DISCUSSION = gql`
+  query Discussion($_id: ID!) {
+    discussion(_id: $_id) {
+      _id
+      title
+      userId {
+        ...
+      }
+      comments {
+        _id
+        text
+        user {
+          ...
+        }
+      }
+    }
+  }
+`;

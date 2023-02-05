@@ -7,6 +7,7 @@ class AuthService {
 
   loggedIn() {
     const token = this.getToken();
+    console.log('logged in');
     return token ? true : false;
   }
 
@@ -21,6 +22,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("auth_token");
+    console.log("logged out");
     window.location.reload();
   }
 }

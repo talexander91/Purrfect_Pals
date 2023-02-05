@@ -1,8 +1,7 @@
 import { React, useEffect, useState } from "react";
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
-import Box from '@mui/material/Box';
-
+import Box from "@mui/material/Box";
 
 function CatFetch(catName) {
   const [catPic, setcatPic] = useState({});
@@ -21,21 +20,23 @@ function CatFetch(catName) {
     setcatDesc(data[0]);
   }
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   return (
-    <Box sx={{
-      display: "flex",
-      flexDirection: "row",
-      width: "90%",
-      backgroundColor: 'primary.dark',
-      '&:hover': {
-        backgroundColor: 'primary.main',
-        opacity: [0.9, 0.8, 0.7],
-      },
-    }}>
-      <CatAvatar catPic={catPic.image_link}/>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        width: "90%",
+        backgroundColor: "primary.dark",
+        "&:hover": {
+          backgroundColor: "primary.main",
+          opacity: [0.9, 0.8, 0.7],
+        },
+      }}
+    >
+      <CatAvatar catPic={catPic.image_link} />
       <CatDesc
         catDesc={[
           catDesc.origin,
