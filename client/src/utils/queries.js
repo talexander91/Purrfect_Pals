@@ -9,3 +9,20 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_DISCUSSIONS = gql`
+query Discussions {
+  discussions {
+    _id
+    comments {
+      text
+      user {
+        name
+      }
+    }
+    title
+  }
+  me {
+    name
+  }
+}`;

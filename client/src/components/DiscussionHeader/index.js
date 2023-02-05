@@ -19,7 +19,7 @@ function DiscussionHeader() {
     >
       <CatFetch></CatFetch>
     </Box>
-  );
-}
+    )
+};
 
 export default DiscussionHeader;
