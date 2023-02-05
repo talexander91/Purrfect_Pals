@@ -11,19 +11,22 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_DISCUSSIONS = gql`
-  query Discussions {
-    discussions {
+query GetDiscussion($id: ID!) {
+  discussion(id: $id) {
+    _id
+    title
+    userId {
       _id
-      comments {
-        text
-        user {
-          name
-        }
-      }
-      title
-    }
-    me {
       name
     }
+    comments {
+      _id
+      text
+      user {
+        _id
+        name
+      }
+    }
   }
+}
 `;

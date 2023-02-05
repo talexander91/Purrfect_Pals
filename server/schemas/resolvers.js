@@ -22,12 +22,10 @@ const resolvers = {
       return Discussion.find();
     },
     discussion: async (parent, args, context, info) => {
-      const discussion = await Discussion.findOne({ _id: args._id });
-      const comments = await Comment.find({ discussion: args._id });
-      return {
-        ...discussion.toObject(),
-        comments,
-      };
+      const discussion = await Discussion.findById(args.id)
+        .populate("comments")
+        .populate("userId");
+      return discussion;
     },
   },
   Mutation: {
