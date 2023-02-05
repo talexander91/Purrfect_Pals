@@ -22,7 +22,6 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("auth_token");
-    console.log("logged out");
     window.location.reload();
   }
 }
