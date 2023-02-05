@@ -8,7 +8,7 @@ import CatFetch from "../Fetch/catFetch";
 function LoadDiscussionById() {
     const location = useLocation()
     const { loading, err, data } = useQuery(QUERY_DISCUSSION_BY_ID, {
-        variables: {id: location.state.discussion}
+        variables: { "id": location.state.discussion }
     });
     console.log(data)
 
@@ -17,7 +17,7 @@ function LoadDiscussionById() {
     return (
         <div>
             <div>
-                Hello there
+                <CatFetch catName={data.discussionById.title}></CatFetch>
             </div>
         </div>
     )

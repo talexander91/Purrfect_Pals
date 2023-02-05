@@ -38,7 +38,7 @@ const typeDefs = gql`
     me: User
     discussions: [Discussion]
     comments: [Comment]
-    discussion(id: ID!): Discussion
+    discussionById(_id:String!): Discussion
   }
 
   type Mutation {

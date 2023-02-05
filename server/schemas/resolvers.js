@@ -25,9 +25,11 @@ const resolvers = {
       return Comment.find({ discussion: parent._id });
     },
     discussionById: async (parent, args, context, info) => {
-      const discussion = await Discussion.findById(args.id)
+      console.log(args)
+
+      const discussion = await Discussion.findById(args._id)
         .populate('comments')
-        .populate('userId');
+        .populate(context.userId);
       return discussion;
     },
   },
