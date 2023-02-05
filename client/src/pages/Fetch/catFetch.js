@@ -1,13 +1,22 @@
 import { React, useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom"
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
 import Box from '@mui/material/Box';
+import LoadDiscussionById from "../LoadDiscussionById/LoadDiscussionById";
 
 
-function CatFetch(catName) {
+function CatFetch(props) {
+  const navigate = useNavigate();
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
-  let cat = catName.catName;
+  
+  const handleClick = () => {
+    navigate(`/discussion/${props.discussion}`, { state: { discussion: props.discussion }});
+
+  };
+  
+  let cat = props.catName;
   async function fetchData() {
     const response = await fetch(
       `https://api.api-ninjas.com/v1/cats?name=${cat}`,
@@ -34,8 +43,8 @@ function CatFetch(catName) {
         backgroundColor: 'primary.main',
         opacity: [0.9, 0.8, 0.7],
       },
-    }}>
-      <CatAvatar catPic={catPic.image_link}/>
+    }} onClick={handleClick}>
+      <CatAvatar catPic={catPic.image_link} />
       <CatDesc
         catDesc={[
           catDesc.origin,
@@ -53,3 +62,4 @@ function CatFetch(catName) {
 }
 
 export default CatFetch;
+

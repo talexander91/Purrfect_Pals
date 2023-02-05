@@ -16,8 +16,9 @@ function LoadAllDiscussions() {
             <div>
                 {data.discussions.map((discussions) => {
                     const catName = discussions.title;
+                    const discussion = discussions._id
                     return (
-                        <CatFetch catName={catName}></CatFetch>
+                        <CatFetch catName={catName} discussion={discussion}></CatFetch>
                     );
                 })}
             </div>
