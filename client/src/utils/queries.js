@@ -28,8 +28,8 @@ query Discussions {
 }`;
 
 export const QUERY_DISCUSSION_BY_ID = gql`
-query DiscussionById($id: ID!) {
-  discussionById(id: $id) {
+query DiscussionById($id: String!) {
+  discussionById(_id: $id) {
     _id
     title
     userId {
