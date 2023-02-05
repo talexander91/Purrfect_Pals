@@ -27,9 +27,11 @@ function CatFetch(catName) {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", md: "row" },
         width: "90%",
-        backgroundColor: "primary.dark",
+        backgroundColor: "#F4EBE7",
+        border: 1,
+        m: 1,
         "&:hover": {
           backgroundColor: "primary.main",
           opacity: [0.9, 0.8, 0.7],

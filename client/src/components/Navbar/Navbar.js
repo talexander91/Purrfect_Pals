@@ -78,7 +78,9 @@ function Navbar() {
               textDecoration: "none",
             }}
           ></Typography>
-
+          <Typography className="text-rainbow-animation">
+            Purrfect Friends
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -174,7 +176,11 @@ function Navbar() {
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
-                    <Link id="navText" to={setting.href} onClick={setting?.onClick}>
+                    <Link
+                      id="navText"
+                      to={setting.href}
+                      onClick={setting?.onClick}
+                    >
                       {setting.text}
                     </Link>
                   </Typography>
