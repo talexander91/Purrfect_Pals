@@ -23,6 +23,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21"
+    "postcss": "^8.4.21",
+    "react-router-dom": "^6.8.0"
   }
 }

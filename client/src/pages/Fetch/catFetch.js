@@ -2,8 +2,15 @@ import { React, useEffect, useState } from "react";
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
 import Box from "@mui/material/Box";
+import {useNavigate} from "react-router-dom"
 
-function CatFetch(catName) {
+function CatFetch(catName, discussion) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/discussion/${discussion._id}`);
+  };
+
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
   let cat = catName.catName;
@@ -24,7 +31,7 @@ function CatFetch(catName) {
   }, []);
 
   return (
-    <Box
+    <Box onClick={handleClick}
       sx={{
         display: "flex",
         flexDirection: "row",
