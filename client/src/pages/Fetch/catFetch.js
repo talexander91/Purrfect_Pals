@@ -1,8 +1,9 @@
 import { React, useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom"
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
-import Box from "@mui/material/Box";
-import {useNavigate} from "react-router-dom"
+import Box from '@mui/material/Box';
+import LoadDiscussionById from "../LoadDiscussionById/LoadDiscussionById";
 
 function CatFetch(catName, discussion) {
   const navigate = useNavigate();
@@ -11,9 +12,17 @@ function CatFetch(catName, discussion) {
     navigate(`/discussion/${discussion._id}`);
   };
 
+function CatFetch(props) {
+  const navigate = useNavigate();
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
-  let cat = catName.catName;
+  
+  const handleClick = () => {
+    navigate(`/discussion/${props.discussion}`, { state: { discussion: props.discussion }});
+
+  };
+  
+  let cat = props.catName;
   async function fetchData() {
     const response = await fetch(
       `https://api.api-ninjas.com/v1/cats?name=${cat}`,
@@ -31,20 +40,16 @@ function CatFetch(catName, discussion) {
   }, []);
 
   return (
-    <Box onClick={handleClick}
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        width: "90%",
-        backgroundColor: "#F4EBE7",
-        border: 1,
-        m: 1,
-        "&:hover": {
-          backgroundColor: "primary.main",
-          opacity: [0.9, 0.8, 0.7],
-        },
-      }}
-    >
+    <Box sx={{
+      display: "flex",
+      flexDirection: "row",
+      width: "90%",
+      backgroundColor: 'primary.dark',
+      '&:hover': {
+        backgroundColor: 'primary.main',
+        opacity: [0.9, 0.8, 0.7],
+      },
+    }} onClick={handleClick}>
       <CatAvatar catPic={catPic.image_link} />
       <CatDesc
         catDesc={[
@@ -61,5 +66,7 @@ function CatFetch(catName, discussion) {
     </Box>
   );
 }
+}
 
 export default CatFetch;
+

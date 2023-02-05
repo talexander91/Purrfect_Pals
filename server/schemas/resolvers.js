@@ -21,10 +21,13 @@ const resolvers = {
     discussions: async (parent, args, context) => {
       return Discussion.find();
     },
-    discussion: async (parent, args, context, info) => {
+    comments: async (parent, args, context) => {
+      return Comment.find({ discussion: parent._id });
+    },
+    discussionById: async (parent, args, context, info) => {
       const discussion = await Discussion.findById(args.id)
-        .populate("comments")
-        .populate("userId");
+        .populate('comments')
+        .populate('userId');
       return discussion;
     },
   },
