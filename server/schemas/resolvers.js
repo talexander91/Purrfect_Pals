@@ -21,6 +21,14 @@ const resolvers = {
     discussions: async (parent, args, context) => {
       return Discussion.find();
     },
+    discussion: async (parent, args, context, info) => {
+      const discussion = await Discussion.findOne({ _id: args._id });
+      const comments = await Comment.find({ discussion: args._id });
+      return {
+        ...discussion.toObject(),
+        comments,
+      };
+    },
   },
   Mutation: {
     register: async (parent, { name, email, password }) => {
