@@ -4,6 +4,7 @@ import { QUERY_DISCUSSION_BY_ID } from "../../utils/queries";
 import { useLocation } from "react-router-dom";
 
 import CatFetch from "../Fetch/catFetch";
+import CommentsForm from "../Discussion/CommentsForm";
 
 function LoadDiscussionById() {
     const location = useLocation()
@@ -18,6 +19,7 @@ function LoadDiscussionById() {
         <div>
             <div>
                 <CatFetch catName={data.discussionById.title}></CatFetch>
+                <CommentsForm/>
             </div>
         </div>
     )
