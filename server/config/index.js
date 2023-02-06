@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING || "mongodb://127.0.0.1:27017/exampleDB")
-  .then(() => console.log("MongoDB has been connected"))
-  .catch((err) => console.log(err));
-
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/exampleDB',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+  );
 
 module.exports = mongoose.connection;
