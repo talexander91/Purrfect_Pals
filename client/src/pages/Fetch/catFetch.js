@@ -2,9 +2,8 @@ import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import LoadDiscussionById from "../LoadDiscussionById/LoadDiscussionById";
-
 
 function CatFetch(props) {
   const [catPic, setcatPic] = useState({});
@@ -31,13 +30,11 @@ function CatFetch(props) {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "",
+        border: 1,
+        m: 1,
         width: "90%",
-        backgroundColor: "primary.dark",
-        "&:hover": {
-          backgroundColor: "primary.main",
-          opacity: [0.9, 0.8, 0.7],
-        },
+        backgroundColor: "#F4EBE8",
       }}
     >
       <CatAvatar catPic={catPic.image_link} />

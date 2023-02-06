@@ -4,6 +4,7 @@ import { LOGIN_USER } from "../../utils/mutations";
 import Box from "@mui/material/Box";
 
 import Auth from "../../utils/auth.js";
+import { Typography } from "@mui/material";
 
 function Login() {
   const [formState, setFormState] = useState({
@@ -63,6 +64,9 @@ function Login() {
               onChange={handleInputChange}
             />
           </Box>
+          <Typography>
+            Don't have an <a href="/register">account?</a>{" "}
+          </Typography>
           <Box sx={{ fontSize: 18 }}>
             <button type="submit">Login</button>
           </Box>
