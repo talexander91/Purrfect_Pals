@@ -11,17 +11,22 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_DISCUSSIONS = gql`
-  query Discussions {
-    discussions {
-      _id
-      comments {
-        text
-        user {
-          name
-        }
+query Discussions {
+  discussions {
+    _id
+    comments {
+      text
+      user {
+        name
       }
+<<<<<<< HEAD
       title
     }
+=======
+    }
+    title
+  }
+>>>>>>> d66459e3257f90fd694c4a27132582de1d8d1046
   me {
     name
   }
@@ -46,4 +51,20 @@ query DiscussionById($id: String!) {
     }
   }
 }
+`;
+export const GET_COMMENTS_FOR_DISCUSSION = gql`
+  query GetCommentsForDiscussion($id: String!) {
+    discussionById(_id: $id) {
+      comments {
+        _id
+        text
+        discussion {
+          _id
+        }
+        user {
+          name
+        }
+      }
+    }
+  }
 `;

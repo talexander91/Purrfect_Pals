@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
 import Box from '@mui/material/Box';
@@ -9,9 +9,7 @@ import LoadDiscussionById from "../LoadDiscussionById/LoadDiscussionById";
 function CatFetch(props) {
   const [catPic, setcatPic] = useState({});
   const [catDesc, setcatDesc] = useState({});
-  
 
-  
   let cat = props.catName;
   async function fetchData() {
     const response = await fetch(
@@ -33,11 +31,9 @@ function CatFetch(props) {
     <Box
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" },
+        flexDirection: "row",
         width: "90%",
-        backgroundColor: "#F4EBE7",
-        border: 1,
-        m: 1,
+        backgroundColor: "primary.dark",
         "&:hover": {
           backgroundColor: "primary.main",
           opacity: [0.9, 0.8, 0.7],
@@ -62,4 +58,3 @@ function CatFetch(props) {
 }
 
 export default CatFetch;
-

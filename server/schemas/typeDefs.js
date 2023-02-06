@@ -45,7 +45,7 @@ const typeDefs = gql`
     register(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addDiscussion(title: String!): Discussion
-    addComment(text: String!, discussion: ID!): Comment
+    addComment(text: String!, discussion: String!): Comment
   }
 `;
 

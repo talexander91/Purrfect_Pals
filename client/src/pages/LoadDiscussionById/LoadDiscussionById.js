@@ -1,27 +1,54 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_DISCUSSION_BY_ID } from "../../utils/queries";
 import { useLocation } from "react-router-dom";
 import CommentsForm from "../Discussion/CommentsForm.js"
 
 import CatFetch from "../Fetch/catFetch";
+import CommentsForm from "../Discussion/CommentsForm";
 
 function LoadDiscussionById() {
-    const location = useLocation()
-    const { loading, err, data } = useQuery(QUERY_DISCUSSION_BY_ID, {
-        variables: { "id": location.state.discussion }
-    });
-    console.log(data)
+   
+    const[comments, setComments] = useState([])
+ 
+    const location = useLocation();
 
-    if (loading) return <p>Loading...</p>;
-    if (err) return <p>Error!</p>;
-    return (
+  const {
+    loading: discussionLoading,
+    err: discussionError,
+    data: discussionData,
+  } = useQuery(QUERY_DISCUSSION_BY_ID, {
+    variables: { id: location.state.discussion },
+  });
+  useEffect(() => {
+    if (discussionData) {
+      setComments(discussionData.discussionById.comments);
+    }
+  },[discussionData]);
+
+  if (discussionLoading) {return <p>Loading...</p>};
+  if (discussionError) {return <p>Error!</p>};
+
+    console.log(comments)
+  return (
+    <div>
+      <div>
+        <CatFetch catName={discussionData.discussionById.title}></CatFetch>
+        <CommentsForm comments={comments} setComments={setComments} />
         <div>
-            <div>
-                <CatFetch catName={data.discussionById.title}></CatFetch>
-                <CommentsForm></CommentsForm>
-            </div>
+          {comments.map((comments) => {
+            return(
+                <div>
+            <h1>{comments.user?.name}</h1>
+          <p>{comments.text}</p>
+          </div>
+            )
+          })}
         </div>
-    )
+            
+      </div>
+    </div>
+  );
 }
-export default LoadDiscussionById
+export default LoadDiscussionById;
+

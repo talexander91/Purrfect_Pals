@@ -21,15 +21,15 @@ const resolvers = {
     discussions: async (parent, args, context) => {
       return Discussion.find();
     },
-    comments: async (parent, args, context) => {
-      return Comment.find({ discussion: parent._id });
-    },
     discussionById: async (parent, args, context, info) => {
-      console.log(args)
-
       const discussion = await Discussion.findById(args._id)
-        .populate('comments')
-        .populate(context.userId);
+        .populate(context.userId)
+        .populate({
+          path: "comments",
+          populate: {
+            path: "user",
+          },
+        });
       return discussion;
     },
   },
@@ -74,6 +74,7 @@ const resolvers = {
           user: context.user,
           discussion,
         });
+        console.log(comment.user)
         await Discussion.findByIdAndUpdate(discussion, {
           $push: { comments: comment._id },
         });

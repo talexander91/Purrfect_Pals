@@ -14,7 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Auth from "../../utils/auth.js";
 import React, { useState, useContext } from "react";
 import AuthService from "../../utils/auth";
-import { Link } from "react-router-dom";
+import logout from "../../utils/auth";
 
 const pages = [
   { linkText: "Home", linkHref: "/" },
@@ -25,16 +25,18 @@ const pages = [
 let settings = [
   { text: "Profile", href: "/profile/:id" },
   { text: "Login", href: "/login" },
+  { text: "Register", href: "/register" },
+  { text: "Logout", href: "/" },
 ];
 
-function Navbar() {
+function ResponsiveAppBar({ Auth }) {
   const [isLoggedIn, setIsLoggedIn] = useState(AuthService.loggedIn());
   console.log(AuthService.loggedIn());
 
   settings = isLoggedIn
     ? [
         { text: "Profile", href: "/profile/:id" },
-        { text: "Logout", href: "/", onClick: AuthService.logout },
+        { text: "Logout", href: "/", onClick: () => logout() },
       ]
     : [
         { text: "Login", href: "/login" },
@@ -63,6 +65,20 @@ function Navbar() {
     <AppBar style={{ background: "#8E8DBE" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              class="text-rainbow-animation"
+              sx={{ textAlign: "center" }}
+            >
+              Purrfect Pals
+            </Typography>
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -78,9 +94,6 @@ function Navbar() {
               textDecoration: "none",
             }}
           ></Typography>
-          <Typography className="text-rainbow-animation">
-            Purrfect Friends
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -113,9 +126,9 @@ function Navbar() {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link id="navText" to={page.linkHref}>
+                    <a id="navText" href={page.linkHref}>
                       {page.linkText}
-                    </Link>
+                    </a>
                   </Typography>
                 </MenuItem>
               ))}
@@ -143,9 +156,9 @@ function Navbar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, display: "block" }}
               >
-                <Link id="navText" to={page.linkHref}>
+                <a id="navText" href={page.linkHref}>
                   {page.linkText}
-                </Link>
+                </a>
               </Button>
             ))}
           </Box>
@@ -176,13 +189,13 @@ function Navbar() {
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
-                    <Link
+                    <Button
                       id="navText"
-                      to={setting.href}
-                      onClick={setting?.onClick}
+                      href={setting.href}
+                      onClick={setting.onClick}
                     >
                       {setting.text}
-                    </Link>
+                    </Button>
                   </Typography>
                 </MenuItem>
               ))}
@@ -193,4 +206,4 @@ function Navbar() {
     </AppBar>
   );
 }
-export default Navbar;
+export default ResponsiveAppBar;
