@@ -35,12 +35,10 @@ mutation AddComment($title: String!) {
 `;
 
 export const CREATE_COMMENT = gql`
-mutation AddComment($text: String!, $discussion: ID!) {
+mutation AddComment($text: String!, $discussion: String!) {
   addComment(text: $text, discussion: $discussion) {
-    _id
     discussion {
       _id
-      title
     }
     text
     user {

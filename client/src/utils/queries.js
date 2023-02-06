@@ -47,3 +47,19 @@ query DiscussionById($id: String!) {
   }
 }
 `;
+export const GET_COMMENTS_FOR_DISCUSSION = gql`
+  query GetCommentsForDiscussion($id: String!) {
+    discussionById(_id: $id) {
+      comments {
+        _id
+        text
+        discussion {
+          _id
+        }
+        user {
+          name
+        }
+      }
+    }
+  }
+`;
