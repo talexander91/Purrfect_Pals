@@ -3,9 +3,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_DISCUSSION_BY_ID } from "../../utils/queries";
 import { useLocation } from "react-router-dom";
 import CommentsForm from "../Discussion/CommentsForm.js"
-
 import CatFetch from "../Fetch/catFetch";
-import CommentsForm from "../Discussion/CommentsForm";
 
 function LoadDiscussionById() {
    

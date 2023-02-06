@@ -19,14 +19,9 @@ query Discussions {
       user {
         name
       }
-<<<<<<< HEAD
-      title
-    }
-=======
     }
     title
   }
->>>>>>> d66459e3257f90fd694c4a27132582de1d8d1046
   me {
     name
   }
