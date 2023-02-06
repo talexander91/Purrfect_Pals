@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { REGISTER_USER } from "../../utils/mutations";
-
+import Box from "@mui/material/Box";
 import Auth from "../../utils/auth.js";
 
 function Register() {
@@ -31,30 +31,51 @@ function Register() {
     }
   };
   return (
-    <div>
-      <h1>Register Page</h1>
+    <Box
+      sx={{
+        height: "75vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Box sx={{ mb: 2, fontSize: 25 }}>
+        <h1>Register</h1>
+      </Box>
       <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={formState.name}
-          onChange={handleInputChange}
-        />
-        <input
-          type="email"
-          name="email"
-          value={formState.email}
-          onChange={handleInputChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={formState.password}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Register User</button>
+        <p>Name</p>
+        <Box sx={{ mb: 2, fontSize: 25 }}>
+          <input
+            type="text"
+            name="name"
+            value={formState.name}
+            onChange={handleInputChange}
+          />
+        </Box>
+        <p>Email</p>
+        <Box sx={{ mb: 2, fontSize: 25 }}>
+          <input
+            type="email"
+            name="email"
+            value={formState.email}
+            onChange={handleInputChange}
+          />
+        </Box>
+        <p>Password</p>
+        <Box sx={{ mb: 2, fontSize: 25 }} s>
+          <input
+            type="password"
+            name="password"
+            value={formState.password}
+            onChange={handleInputChange}
+          />
+        </Box>
+        <Box sx={{ fontSize: 18 }}>
+          <button type="submit">Register</button>
+        </Box>
       </form>
-    </div>
+    </Box>
   );
 }
 

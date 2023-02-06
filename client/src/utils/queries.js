@@ -9,3 +9,57 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_DISCUSSIONS = gql`
+query Discussions {
+  discussions {
+    _id
+    comments {
+      text
+      user {
+        name
+      }
+    }
+    title
+  }
+  me {
+    name
+  }
+}`;
+
+export const QUERY_DISCUSSION_BY_ID = gql`
+query DiscussionById($id: String!) {
+  discussionById(_id: $id) {
+    _id
+    title
+    userId {
+      _id
+      name
+    }
+    comments {
+      _id
+      text
+      user {
+        _id
+        name
+      }
+    }
+  }
+}
+`;
+export const GET_COMMENTS_FOR_DISCUSSION = gql`
+  query GetCommentsForDiscussion($id: String!) {
+    discussionById(_id: $id) {
+      comments {
+        _id
+        text
+        discussion {
+          _id
+        }
+        user {
+          name
+        }
+      }
+    }
+  }
+`;

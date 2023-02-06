@@ -10,11 +10,13 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Discussion from "./pages/Discussion";
-import CatAvatar from "./pages/Fetch";
-import CatFetch from "./pages/Fetch";
-import CatDesc from "./pages/Fetch";
+import Shelter from "./pages/Shelter";
+import About from "./pages/About/About";
+import LoadDiscussionById from "./pages/LoadDiscussionById/LoadDiscussionById";
+
+import Box from "@mui/material/Box";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -38,14 +40,19 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Navbar />
+      
       <Router>
+      <Navbar />
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/discussion" element={<Discussion/>}/>
+            <Route path="/shelter" element={<Shelter />} />
+            <Route path="/discussion" element={<Discussion />} />
+            <Route path="/about" element={<About />} />
+            <Route path="discussion/:id" element={<LoadDiscussionById/>}/>
+
           </Routes>
         </div>
       </Router>

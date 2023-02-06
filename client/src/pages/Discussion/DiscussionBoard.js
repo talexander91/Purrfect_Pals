@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DiscussionHeader from '../../components/DiscussionHeader';
 
 class DiscussionBoard extends Component {
   constructor(props) {

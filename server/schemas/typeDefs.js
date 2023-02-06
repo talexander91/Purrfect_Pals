@@ -38,13 +38,14 @@ const typeDefs = gql`
     me: User
     discussions: [Discussion]
     comments: [Comment]
+    discussionById(_id:String!): Discussion
   }
 
   type Mutation {
     register(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addDiscussion(title: String!): Discussion
-    addComment(text: String!, discussion: ID!): Comment
+    addComment(text: String!, discussion: String!): Comment
   }
 `;
 

@@ -19,7 +19,18 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     discussions: async (parent, args, context) => {
-      return Discussion.find()
+      return Discussion.find();
+    },
+    discussionById: async (parent, args, context, info) => {
+      const discussion = await Discussion.findById(args._id)
+        .populate(context.userId)
+        .populate({
+          path: "comments",
+          populate: {
+            path: "user",
+          },
+        });
+      return discussion;
     },
   },
   Mutation: {
@@ -63,6 +74,7 @@ const resolvers = {
           user: context.user,
           discussion,
         });
+        console.log(comment.user)
         await Discussion.findByIdAndUpdate(discussion, {
           $push: { comments: comment._id },
         });

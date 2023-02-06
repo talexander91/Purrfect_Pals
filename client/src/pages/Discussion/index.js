@@ -1,1 +1,1 @@
-export { default } from "./DiscussionBoard.js";
+export { default } from "./LoadAllDiscussions.js";
