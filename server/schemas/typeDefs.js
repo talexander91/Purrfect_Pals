@@ -38,11 +38,7 @@ const typeDefs = gql`
     me: User
     discussions: [Discussion]
     comments: [Comment]
-<<<<<<< HEAD
     discussionById(_id:String!): Discussion
-=======
-    discussion(id: ID!): Discussion
->>>>>>> 004eb097c3557adfcf4f090cb1f3ccff31511528
   }
 
   type Mutation {

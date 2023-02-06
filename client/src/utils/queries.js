@@ -22,11 +22,6 @@ export const QUERY_DISCUSSIONS = gql`
       }
       title
     }
-    me {
-      name
-    }
-  }
-<<<<<<< HEAD
   me {
     name
   }
@@ -51,6 +46,4 @@ query DiscussionById($id: String!) {
     }
   }
 }
-=======
->>>>>>> 004eb097c3557adfcf4f090cb1f3ccff31511528
 `;

@@ -2,6 +2,7 @@ import { React } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_DISCUSSION_BY_ID } from "../../utils/queries";
 import { useLocation } from "react-router-dom";
+import CommentsForm from "../Discussion/CommentsForm.js"
 
 import CatFetch from "../Fetch/catFetch";
 
@@ -18,6 +19,7 @@ function LoadDiscussionById() {
         <div>
             <div>
                 <CatFetch catName={data.discussionById.title}></CatFetch>
+                <CommentsForm></CommentsForm>
             </div>
         </div>
     )

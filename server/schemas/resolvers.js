@@ -21,7 +21,6 @@ const resolvers = {
     discussions: async (parent, args, context) => {
       return Discussion.find();
     },
-<<<<<<< HEAD
     comments: async (parent, args, context) => {
       return Comment.find({ discussion: parent._id });
     },
@@ -32,15 +31,6 @@ const resolvers = {
         .populate('comments')
         .populate(context.userId);
       return discussion;
-=======
-    discussion: async (parent, args, context, info) => {
-      const discussion = await Discussion.findOne({ _id: args._id });
-      const comments = await Comment.find({ discussion: args._id });
-      return {
-        ...discussion.toObject(),
-        comments,
-      };
->>>>>>> 004eb097c3557adfcf4f090cb1f3ccff31511528
     },
   },
   Mutation: {
