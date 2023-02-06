@@ -1,42 +1,46 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 require("dotenv").config();
 
-const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
-const { join } = require("path");
-const { authMiddleware } = require("./utils/auth.js");
+const cors = require("cors");
 
-const { typeDefs, resolvers } = require("./schemas");
-const db = require("./config");
+const app = express();
+app.use(cors());
+
+//import your models
+require("./models/quote");
+
+mongoose
+  .connect(
+    process.env.MONGODB_CONNECTION_STRING,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log("MongoDB has been connected"))
+  .catch((err) => console.log(err));
+
+//middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//import routes
+require("./routes/quoteRoute.js")(app);
 
 const PORT = process.env.PORT || 3001;
-const app = express();
 
+// Accessing the path module
+const path = require("path");
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware,
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// Step 2:
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-
-
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(join(__dirname, "..", "client", "build")));
-}
-
-app.get("/", (req, res) => {
-  res.sendFile(join(__dirname, "client", "build", "index.html"));
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
 });
-
-const startApolloServer = async (typeDefs, resolvers) => {
-  await server.start();
-  server.applyMiddleware({ app });
-
-  db.once("open", () => app.listen(PORT));
-};
-
-startApolloServer(typeDefs, resolvers);
