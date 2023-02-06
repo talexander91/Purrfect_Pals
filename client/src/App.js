@@ -44,12 +44,12 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/shelter" element={<Shelter />} />
             <Route path="/discussion" element={<Discussion />} />
             <Route path="/about" element={<About />} />
-            <Route path="discussion/:id" element={<LoadDiscussionById/>}/> */}
+            <Route path="discussion/:id" element={<LoadDiscussionById/>}/>
 
           </Routes>
         </div>
