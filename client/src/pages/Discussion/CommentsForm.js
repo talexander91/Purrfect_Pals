@@ -1,20 +1,21 @@
 import React, { useState } from "react";
+import { Box } from "@mui/system";
 
 function CommentsForm() {
   const [comment, setComment] = useState("");
 
-  const handleCommentChange = event => {
+  const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log(comment);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <Box>
         <label htmlFor="comment">Leave a comment:</label>
         <textarea
           id="comment"
@@ -22,7 +23,7 @@ function CommentsForm() {
           value={comment}
           onChange={handleCommentChange}
         />
-      </div>
+      </Box>
       <button type="submit">Submit</button>
     </form>
   );

@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +11,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Auth from "../../utils/auth.js";
+import React, { useState, useContext } from "react";
+import AuthService from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 const pages = [
   { linkText: "Home", linkHref: "/" },
@@ -19,12 +22,25 @@ const pages = [
   { linkText: "Shelter", linkHref: "/shelter" },
   { linkText: "About", linkHref: "/about" },
 ];
-const settings = [
+let settings = [
   { text: "Profile", href: "/profile/:id" },
   { text: "Login", href: "/login" },
 ];
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(AuthService.loggedIn());
+  console.log(AuthService.loggedIn());
+
+  settings = isLoggedIn
+    ? [
+        { text: "Profile", href: "/profile/:id" },
+        { text: "Logout", href: "/", onClick: AuthService.logout },
+      ]
+    : [
+        { text: "Login", href: "/login" },
+        { text: "Register", href: "/register" },
+      ];
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -62,7 +78,9 @@ function Navbar() {
               textDecoration: "none",
             }}
           ></Typography>
-
+          <Typography className="text-rainbow-animation">
+            Purrfect Friends
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -158,9 +176,13 @@ function Navbar() {
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">
-                    <a id="navText" href={setting.href}>
+                    <Link
+                      id="navText"
+                      to={setting.href}
+                      onClick={setting?.onClick}
+                    >
                       {setting.text}
-                    </a>
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}

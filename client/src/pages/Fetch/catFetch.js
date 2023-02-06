@@ -26,20 +26,24 @@ function CatFetch(props) {
     setcatDesc(data[0]);
   }
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   return (
-    <Box sx={{
-      display: "flex",
-      flexDirection: "row",
-      width: "90%",
-      backgroundColor: 'primary.dark',
-      '&:hover': {
-        backgroundColor: 'primary.main',
-        opacity: [0.9, 0.8, 0.7],
-      },
-    }} >
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        width: "90%",
+        backgroundColor: "#F4EBE7",
+        border: 1,
+        m: 1,
+        "&:hover": {
+          backgroundColor: "primary.main",
+          opacity: [0.9, 0.8, 0.7],
+        },
+      }}
+    >
       <CatAvatar catPic={catPic.image_link} />
       <CatDesc
         catDesc={[

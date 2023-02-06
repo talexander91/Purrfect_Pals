@@ -11,31 +11,46 @@ import {useNavigate} from "react-router-dom"
 
 
 function LoadAllDiscussions() {
-    const { loading, err, data } = useQuery(QUERY_DISCUSSIONS);
-    const navigate = useNavigate();
+  const { loading, err, data } = useQuery(QUERY_DISCUSSIONS);
+  const navigate = useNavigate();
 
-    if (loading) return <p>Loading...</p>;
-    if (err) return <p>Error!</p>;
-    return (
-        <div id="discussion-section">
-            <DiscussionPage></DiscussionPage>
-            <div>
-                {data.discussions.map((discussions) => {
-                    const catName = discussions.title;
-                    const discussion = discussions._id;
+  console.log(data);
+  if (loading) return <p>Loading...</p>;
+  if (err) return <p>Error!</p>;
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        // alignItems: "center",
+        flexDirection: "column",
+        m: 1,
+      }}
+      id="discussion-section"
+    >
+      <DiscussionPage></DiscussionPage>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        {data.discussions.map((discussions) => {
+          const catName = discussions.title;
+          const discussion = discussions._id;
                     const handleClick = () => {
                         navigate(`/discussion/${discussion}`, { state: { discussion: discussion }});
-                    
-                      };
-                    return (
-                        <Box onClick={handleClick}>
-                            {console.log(discussion)}
-                        <CatFetch catName={catName} discussion={discussion}></CatFetch>
-                        </Box>
-                    );
-                })}
-            </div>
-        </div>)
+                    };
+          return (
+            <Box onClick={handleClick}>
+          <CatFetch catName={catName} discussion={discussion}></CatFetch>
+          </Box>);
+        })}
+      </Box>
+    </Box>
+  );
 }
 
-export default LoadAllDiscussions
+export default LoadAllDiscussions;
