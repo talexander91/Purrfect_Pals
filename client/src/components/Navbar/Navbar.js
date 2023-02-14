@@ -32,10 +32,7 @@ function Navbar() {
   console.log(AuthService.loggedIn());
 
   settings = isLoggedIn
-    ? [
-        { text: "Profile", href: "/profile/:id" },
-        { text: "Logout", href: "/", onClick: AuthService.logout },
-      ]
+    ? [{ text: "Logout", href: "/", onClick: AuthService.logout }]
     : [
         { text: "Login", href: "/login" },
         { text: "Register", href: "/register" },

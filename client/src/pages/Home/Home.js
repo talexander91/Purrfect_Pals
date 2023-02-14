@@ -38,7 +38,7 @@ function Home() {
               fontWeight: "bold",
             }}
           >
-            Discussion
+            <a href="/discussion">Discussion</a>
             <Typography>
               Create a chatroom for any cat breed you're interested in talking
               about!
@@ -52,7 +52,7 @@ function Home() {
               fontWeight: "bold",
             }}
           >
-            Shelter
+            <a href="/shelter">Shelter</a>
             <Typography>
               Type in your zip code to see shelters near you!
             </Typography>
@@ -65,7 +65,7 @@ function Home() {
               fontWeight: "bold",
             }}
           >
-            About
+            <a href="/about">About</a>
             <Typography>
               Learn more about the group who build this website!
             </Typography>

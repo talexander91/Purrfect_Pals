@@ -2,9 +2,8 @@ import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CatAvatar from "./catAvatar";
 import CatDesc from "./catDesc";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import LoadDiscussionById from "../LoadDiscussionById/LoadDiscussionById";
-
 
 function CatFetch(props) {
   const [catPic, setcatPic] = useState({});
@@ -20,7 +19,7 @@ function CatFetch(props) {
       }
     );
     const data = await response.json();
-    
+
     setcatPic(data[0]);
     setcatDesc(data[0]);
     console.log("hello", catPic.image_link, (catPic.image_link !== undefined))
@@ -35,39 +34,35 @@ function CatFetch(props) {
 
   useEffect(() => {
     fetchData();
-  },[]);
-  
+  }, []);
+
 
   return (
-    <Box>
-      {!catPic ? (<div></div>) : (
-        <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          width: "90%",
-          backgroundColor: "primary.dark",
-          "&:hover": {
-            backgroundColor: "primary.main",
-            opacity: [0.9, 0.8, 0.7],
-          },
-        }}>
-         <CatAvatar catPic={catPic.image_link} />
-         <CatDesc
-           catDesc={[
-             catDesc.origin,
-             catDesc.name,
-             catDesc.grooming,
-             catDesc.shedding,
-             catDesc.min_life_expectancy,
-             catDesc.max_life_expectancy,
-             catDesc.min_weight,
-             catDesc.max_weight,
-           ]}
-         />
-         </Box>
-
-      )}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "",
+        border: 1,
+        m: 1,
+        width: "90%",
+        backgroundColor: "#F4EBE8",
+      }}
+    >
+      {!catPic ? (<div></div>) : (<div>
+        <CatAvatar catPic={catPic.image_link} />
+        <CatDesc
+          catDesc={[
+            catDesc.origin,
+            catDesc.name,
+            catDesc.grooming,
+            catDesc.shedding,
+            catDesc.min_life_expectancy,
+            catDesc.max_life_expectancy,
+            catDesc.min_weight,
+            catDesc.max_weight,
+          ]}
+        />
+      </div>)}
     </Box>
   );
 }

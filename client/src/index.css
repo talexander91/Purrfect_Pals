@@ -98,3 +98,13 @@ a:active { text-decoration: none; }
   height: 300px;
   width: 300px;
 }
+
+#commentsField {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#commentText {
+  font-size: 25px;
+}
