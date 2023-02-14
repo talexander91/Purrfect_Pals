@@ -38,17 +38,17 @@ function CatFetch(props) {
 
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "",
-        border: 1,
-        m: 1,
-        width: "90%",
-        backgroundColor: "#F4EBE8",
-      }}
-    >
-      {!catPic ? (<div></div>) : (<div>
+    <div>
+      {!catPic ? (<noscript></noscript>) : (<Box
+        sx={{
+          display: "flex",
+          flexDirection: "",
+          border: 1,
+          m: 1,
+          width: "90%",
+          backgroundColor: "#F4EBE8",
+        }}
+      >
         <CatAvatar catPic={catPic.image_link} />
         <CatDesc
           catDesc={[
@@ -62,8 +62,8 @@ function CatFetch(props) {
             catDesc.max_weight,
           ]}
         />
-      </div>)}
-    </Box>
+      </Box>)}
+    </div>
   );
 }
 
