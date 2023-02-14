@@ -15,23 +15,9 @@ function LoadAllDiscussions() {
   if (err) return <p>Error!</p>;
   return (
     <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        // alignItems: "center",
-        flexDirection: "column",
-        m: 1,
-      }}
-      id="discussion-section"
     >
       <DiscussionPage></DiscussionPage>
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
       >
         {data.discussions.map((discussions) => {
           const catName = discussions.title;

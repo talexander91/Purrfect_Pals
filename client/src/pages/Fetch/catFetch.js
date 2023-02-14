@@ -19,38 +19,51 @@ function CatFetch(props) {
       }
     );
     const data = await response.json();
+
     setcatPic(data[0]);
     setcatDesc(data[0]);
+    console.log("hello", catPic.image_link, (catPic.image_link !== undefined))
   }
+
+
+  // useEffect(() => {
+  //   if (catPic.image_link !== undefined){
+  //     console.log(catPic)
+  //   fetchData();}
+  // }, []);
+
   useEffect(() => {
     fetchData();
   }, []);
 
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "",
-        border: 1,
-        m: 1,
-        width: "90%",
-        backgroundColor: "#F4EBE8",
-      }}
-    >
-      <CatAvatar catPic={catPic.image_link} />
-      <CatDesc
-        catDesc={[
-          catDesc.origin,
-          catDesc.name,
-          catDesc.grooming,
-          catDesc.shedding,
-          catDesc.min_life_expectancy,
-          catDesc.max_life_expectancy,
-          catDesc.min_weight,
-          catDesc.max_weight,
-        ]}
-      />
-    </Box>
+    <div>
+      {!catPic ? (<noscript></noscript>) : (<Box
+        sx={{
+          display: "flex",
+          flexDirection: "",
+          border: 1,
+          m: 1,
+          width: "90%",
+          backgroundColor: "#F4EBE8",
+        }}
+      >
+        <CatAvatar catPic={catPic.image_link} />
+        <CatDesc
+          catDesc={[
+            catDesc.origin,
+            catDesc.name,
+            catDesc.grooming,
+            catDesc.shedding,
+            catDesc.min_life_expectancy,
+            catDesc.max_life_expectancy,
+            catDesc.min_weight,
+            catDesc.max_weight,
+          ]}
+        />
+      </Box>)}
+    </div>
   );
 }
 
