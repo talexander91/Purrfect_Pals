@@ -67,7 +67,7 @@ function Home() {
           >
             <a href="/about">About</a>
             <Typography>
-              Learn more about the group who build this website!
+              Learn more about the group who built this website!
             </Typography>
           </Typography>
         </Box>

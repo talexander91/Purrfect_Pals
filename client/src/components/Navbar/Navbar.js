@@ -76,7 +76,7 @@ function Navbar() {
             }}
           ></Typography>
           <Typography className="text-rainbow-animation">
-            Purrfect Friends
+            Purrfect Pals
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
