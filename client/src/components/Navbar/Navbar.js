@@ -16,7 +16,7 @@ import React, { useState, useContext } from "react";
 import AuthService from "../../utils/auth";
 import { Link } from "react-router-dom";
 
-const pages = [
+let pages = [
   { linkText: "Home", linkHref: "/" },
   { linkText: "Discussion", linkHref: "/discussion" },
   { linkText: "Shelter", linkHref: "/shelter" },
@@ -38,6 +38,19 @@ function Navbar() {
         { text: "Register", href: "/register" },
       ];
 
+  pages = isLoggedIn
+    ? [
+        { linkText: "Home", linkHref: "/" },
+        { linkText: "Discussion", linkHref: "/discussion" },
+        { linkText: "Shelter", linkHref: "/shelter" },
+        { linkText: "About", linkHref: "/about" },
+      ]
+    : [
+        { linkText: "Home", linkHref: "/" },
+        { linkText: "Discussion", linkHref: "/login" },
+        { linkText: "Shelter", linkHref: "/shelter" },
+        { linkText: "About", linkHref: "/about" },
+      ];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

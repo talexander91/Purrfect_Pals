@@ -42,7 +42,6 @@ mutation AddComment($text: String!, $discussion: String!) {
     }
     text
     user {
-      _id
       name
     }
   }
