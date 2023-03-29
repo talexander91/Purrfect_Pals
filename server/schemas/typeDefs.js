@@ -12,7 +12,7 @@ const typeDefs = gql`
   type Cats {
     _id: ID
     discussionId: String!
-    link: String! 
+    link: String!
   }
 
   type Discussion {
@@ -38,7 +38,7 @@ const typeDefs = gql`
     me: User
     discussions: [Discussion]
     comments: [Comment]
-    discussionById(_id:String!): Discussion
+    discussionById(_id: String!): Discussion
   }
 
   type Mutation {

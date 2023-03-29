@@ -64,6 +64,7 @@ const resolvers = {
         await User.findByIdAndUpdate(context.user._id, {
           $push: { discussions: discussion._id },
         });
+        console.log(discussion);
         return discussion;
       }
     },
@@ -74,7 +75,7 @@ const resolvers = {
           user: context.user,
           discussion,
         });
-        console.log(comment.user)
+
         await Discussion.findByIdAndUpdate(discussion, {
           $push: { comments: comment._id },
         });

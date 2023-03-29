@@ -27,6 +27,7 @@ function CommentsForm({ comments, setComments }) {
         variables: {
           text: comment,
           discussion: location.state.discussion,
+          
         },
       });
 
